@@ -32,6 +32,10 @@ mapa_ndmi = ndmi(banda_nir, banda_swir);
 umbral_agua = 128; 
 mascara_agua = mapa_ndwi > umbral_agua;
 
+% Binarización para la vegetación (umbral NDVI > 128)
+umbral_vegetacion = 128;
+mascara_vegetacion = mapa_ndvi > umbral_vegetacion;
+
 % Cálculo de superficie
 pixeles_agua = sum(mascara_agua(:));
 superficie_agua_ha = pixeles_agua * (100 / 10000);
@@ -85,3 +89,4 @@ imshow(mapa_ndmi, [1 255]);
 colormap(gca, 'jet');
 colorbar;
 title('NDMI - Humedad');
+
