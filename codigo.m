@@ -48,8 +48,6 @@ banda_nir   = imread(nombre_archivo_B08);
 banda_swir  = imread(nombre_archivo_B11);
 
 % Seguridad: Redimensionar B11 (20m) a la resolución de B08 (10m) si es necesario
-% Nota: Si en Octave puro sin librerías esto diera error, asume que las
-% imágenes ya vienen al mismo tamaño desde el satélite/profesor.
 if size(banda_swir, 1) ~= size(banda_nir, 1)
     banda_swir = imresize(banda_swir, size(banda_nir));
 end
